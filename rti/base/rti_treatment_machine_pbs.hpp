@@ -112,7 +112,7 @@ public:
     size_t
     characterize_history(
         const rti::beam_module_ion::spot& s, 
-        float scale)
+        float scale, const std::string primaryDosimeterUnit="")
     {
         auto beam_up  = beamdata_.lower_bound(s.e);
         if(beam_up   == beamdata_.begin() ) std::cerr<<"out-of-bound\n";
@@ -121,9 +121,9 @@ public:
         auto up   = beam_up -> second;
         T mid_ratio = intpl(s.e, beam_down->first, beam_up->first, down.ratio, up.ratio);
         T np_per_mu = 1.0;
-        // TODO:
-        // if (primaryDosimeterUnit == "MU")
-        // T np_per_mu = intpl(s.e, beam_down->first, beam_up->first, down.NPperMU, up.NPperMU);
+        if (primaryDosimeterUnit == "MU")
+          np_per_mu = intpl(s.e, beam_down->first, beam_up->first, down.NPperMU, up.NPperMU);
+          
         return s.meterset * np_per_mu * mid_ratio / scale;
     }
     
