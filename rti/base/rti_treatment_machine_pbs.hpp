@@ -197,7 +197,9 @@ public:
         T mid_e     = intpl(s.e, beam_down->first, beam_up->first, down.E, up.E);
         T mid_de    = intpl(s.e, beam_down->first, beam_up->first, down.dE, up.dE);
         T mid_x     = intpl(s.e, beam_down->first, beam_up->first, down.x, up.x);
+        mid_x = (mid_x != -1e9) ? mid_x : s.fwhm_x / T(2.355);
         T mid_y     = intpl(s.e, beam_down->first, beam_up->first, down.y, up.y);
+        mid_y = (mid_y != -1e9) ? mid_y : s.fwhm_y / T(2.355);
         T mid_xp    = intpl(s.e, beam_down->first, beam_up->first, down.xp, up.xp);
         T mid_yp    = intpl(s.e, beam_down->first, beam_up->first, down.yp, up.yp);
 
