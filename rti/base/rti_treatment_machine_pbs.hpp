@@ -195,11 +195,11 @@ public:
         auto down = beam_down->second;
         auto up   = beam_up -> second;
         T mid_e     = intpl(s.e, beam_down->first, beam_up->first, down.E, up.E);
-        T mid_de    = intpl(s.e, down.E, up.E, down.dE, up.dE);
-        T mid_x     = intpl(s.e, down.E, up.E, down.x,  up.x);
-        T mid_y     = intpl(s.e, down.E, up.E, down.y,  up.y);
-        T mid_xp    = intpl(s.e, down.E, up.E, down.xp, up.xp);
-        T mid_yp    = intpl(s.e, down.E, up.E, down.yp, up.yp);
+        T mid_de    = intpl(s.e, beam_down->first, beam_up->first, down.dE, up.dE);
+        T mid_x     = intpl(s.e, beam_down->first, beam_up->first, down.x, up.x);
+        T mid_y     = intpl(s.e, beam_down->first, beam_up->first, down.y, up.y);
+        T mid_xp    = intpl(s.e, beam_down->first, beam_up->first, down.xp, up.xp);
+        T mid_yp    = intpl(s.e, beam_down->first, beam_up->first, down.yp, up.yp);
 
         auto energy = new rti::norm_1d<T>({mid_e},{mid_de});
 
